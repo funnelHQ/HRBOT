@@ -1,17 +1,17 @@
 version: '3.8'
 
 services:
-  web:
+  backend:
     build: .
     ports:
       - "5000:5000"
     environment:
-      OPENAI_API_KEY: ''
+      OPENAI_API_KEY: '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'
       SECRET_KEY: 'my-secret-key'
-      DATABASE_URI: 'sqlite:////app/instance/questionaire1.db'
+      DATABASE_URI: 'postgresql://postgres:FunnelHQ@database-1.cv0om20okbqv.eu-north-1.rds.amazonaws.com:5432/Questionaire-2'
     command: flask run --host=0.0.0.0 --port=5000
     volumes:
-      - .:/app  # Assuming Flask app code resides in the root directory
+      - .:/app
 
   frontend:
     build: ./frontend
